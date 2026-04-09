@@ -1,7 +1,15 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Hero() {
   const ref = useRef(null)
+  const [textIndex, setTextIndex] = useState(0)
+  const [charIndex, setCharIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  const titles = [
+    'Full Stack & AI Developer',
+    'MERN Stack Developer',
+  ]
 
   useEffect(() => {
     const el = ref.current
@@ -9,8 +17,47 @@ export default function Hero() {
     requestAnimationFrame(() => el.classList.add('opacity-100', 'translate-y-0'))
   }, [])
 
+  useEffect(() => {
+    const currentTitle = titles[textIndex]
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (charIndex < currentTitle.length) {
+          setCharIndex(charIndex + 1)
+        } else {
+          // Wait before deleting
+          setTimeout(() => setIsDeleting(true), 2000)
+        }
+      } else {
+        // Deleting
+        if (charIndex > 0) {
+          setCharIndex(charIndex - 1)
+        } else {
+          setIsDeleting(false)
+          setTextIndex((prev) => (prev + 1) % titles.length)
+        }
+      }
+    }, isDeleting ? 50 : 80)
+
+    return () => clearTimeout(timer)
+  }, [charIndex, isDeleting, textIndex, titles])
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-[72px]">
+      <style>{`
+        @keyframes blink {
+          0%, 49% { opacity: 1; }
+          50%, 100% { opacity: 0; }
+        }
+        .typing-cursor {
+          display: inline-block;
+          width: 2px;
+          height: 1em;
+          background-color: #00d4c0;
+          margin-left: 2px;
+          animation: blink 0.7s infinite;
+        }
+      `}</style>
       <Doodles />
 
       <div className="max-w-5xl mx-auto px-8 py-20 w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10">
@@ -25,8 +72,9 @@ export default function Hero() {
           <h1 className="text-5xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tight mb-5">
             <span className="text-accent">GUPTA</span>
           </h1>
-          <p className="text-accent/80 text-base font-semibold mb-4 tracking-wide">
-            Full Stack &amp; AI Developer
+          <p className="text-accent/80 text-base font-semibold mb-4 tracking-wide h-6 flex items-center">
+            {titles[textIndex].substring(0, charIndex)}
+            <span className="typing-cursor"></span>
           </p>
           <p className="text-secondary text-[0.93rem] leading-relaxed max-w-md mb-8">
             Building scalable MERN stack applications and integrating AI via Claude API,
