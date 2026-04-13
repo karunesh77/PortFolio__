@@ -110,7 +110,7 @@ export default function About() {
       </div>
 
       <div className="max-w-5xl mx-auto px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
 
           {/* Left – bio */}
           <div ref={leftRef} className="opacity-0 -translate-x-10 transition-all duration-700">
@@ -135,7 +135,7 @@ export default function About() {
             </div>
 
             {/* Stats */}
-            <div className="flex gap-8 mb-8">
+            <div className="flex flex-wrap gap-4 sm:gap-8 mb-8">
               {stats.map(s => (
                 <div key={s.label} className="text-center">
                   <p className="text-3xl font-extrabold text-accent leading-none">{s.number}</p>

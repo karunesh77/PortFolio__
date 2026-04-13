@@ -25,7 +25,7 @@ export default function Footer() {
             <p className="text-secondary text-xs mt-1">Full Stack &amp; AI Developer · Noida, India</p>
           </div>
 
-          <ul className="flex gap-7">
+          <ul className="hidden md:flex gap-7">
             {navLinks.map(link => (
               <li key={link.href}>
                 <a href={link.href} className="text-secondary text-sm hover:text-accent transition-colors">

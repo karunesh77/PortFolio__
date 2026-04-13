@@ -60,16 +60,16 @@ export default function Hero() {
       `}</style>
       <Doodles />
 
-      <div className="max-w-5xl mx-auto px-8 py-20 w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10">
+      <div className="max-w-5xl mx-auto px-8 py-20 w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center relative z-10">
         {/* Text */}
         <div ref={ref} className="opacity-0 translate-y-8 transition-all duration-700">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">
             Hello, I am
           </p>
-          <h1 className="text-5xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tight mb-2">
+          <h1 className="text-4xl sm:text-5xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tight mb-2">
             KARUNESH
           </h1>
-          <h1 className="text-5xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tight mb-5">
+          <h1 className="text-4xl sm:text-5xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tight mb-5">
             <span className="text-accent">GUPTA</span>
           </h1>
           <p className="text-accent/80 text-base font-semibold mb-4 tracking-wide h-6 flex items-center">

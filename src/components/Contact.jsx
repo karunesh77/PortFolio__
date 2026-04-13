@@ -138,11 +138,11 @@ export default function Contact() {
       </div>
 
       <div className="max-w-5xl mx-auto px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
 
           {/* Left */}
           <div ref={leftRef} className="opacity-0 -translate-x-10 transition-all duration-700">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Got a project in <span className="text-accent">mind?</span>
             </h2>
             <p className="text-secondary text-[0.93rem] leading-relaxed mb-8">
@@ -152,8 +152,8 @@ export default function Contact() {
             </p>
 
             {/* Illustration */}
-            <div className="flex justify-start mb-8">
-              <svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" className="w-60 animate-float-slow">
+            <div className="hidden sm:flex justify-start mb-8">
+              <svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" className="w-40 sm:w-60 animate-float-slow">
                 <rect x="80" y="220" width="30" height="80" rx="4" fill="#1a3a5c" />
                 <rect x="120" y="185" width="30" height="115" rx="4" fill="#1a3a5c" />
                 <rect x="160" y="155" width="30" height="145" rx="4" fill="#1a3a5c" />
@@ -207,7 +207,7 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                <div className="grid grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="form-input flex flex-col gap-2">
                     <label className="text-[0.8rem] text-secondary font-medium">Your Name</label>
                     <input
